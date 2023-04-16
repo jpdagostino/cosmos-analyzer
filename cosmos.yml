@@ -1,0 +1,27 @@
+version: 1
+database: "sqlite:///cosmos.db"
+data_table: "data_table"
+profiling_table: "profiled_data"
+catalog:
+  path: "https://irsa.ipac.caltech.edu/data/COSMOS/tables/photometry/cosmos2015v21.fits.gz"
+  inputs:
+    - "ALPHA_J2000"
+    - "DELTA_J2000"
+    - "X_IMAGE"
+    - "Y_IMAGE"
+    - "ERRX2_IMAGE"
+    - "ERRY2_IMAGE"
+    - "ERRXY_IMAGE"
+  outputs:
+    - "SFR_MED"
+    - "SFR_BEST"
+    - "MASS_MED"
+    - "MASS_BEST"
+    - "ZPDF"
+model:
+  activation: "relu"
+  optimizer: "adam"
+  loss: "mse"
+  epochs: 44
+  batch: 64
+  save: "cosmos.h5"
